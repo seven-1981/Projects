@@ -8,19 +8,18 @@ CMakeFiles/runTests.dir/TestMain.cpp.o
  /home/pi/CPP/BPMDetector/Audio/ALSACardInfoGetter.hpp
  /home/pi/CPP/BPMDetector/Audio/ALSACardLister.cpp
  /home/pi/CPP/BPMDetector/Audio/ALSACardLister.hpp
- /home/pi/CPP/BPMDetector/Audio/ALSACardManager.cpp
- /home/pi/CPP/BPMDetector/Audio/ALSACardManager.hpp
- /home/pi/CPP/BPMDetector/Audio/AudioRecorder.cpp
- /home/pi/CPP/BPMDetector/Audio/AudioRecorder.hpp
+ /home/pi/CPP/BPMDetector/Audio/AudioCardManager.cpp
+ /home/pi/CPP/BPMDetector/Audio/AudioCardManager.hpp
  /home/pi/CPP/BPMDetector/Audio/Buffer.hpp
  /home/pi/CPP/BPMDetector/Audio/IAudioRecorder.hpp
- /home/pi/CPP/BPMDetector/Audio/ICaptureService.hpp
+ /home/pi/CPP/BPMDetector/Audio/ICardConfiguration.hpp
  /home/pi/CPP/BPMDetector/Audio/ICardConfigurator.hpp
+ /home/pi/CPP/BPMDetector/Audio/ICardInfo.hpp
  /home/pi/CPP/BPMDetector/Audio/ICardInfoGetter.hpp
  /home/pi/CPP/BPMDetector/Audio/ICardLister.hpp
  /home/pi/CPP/BPMDetector/Audio/ICardManager.hpp
- /home/pi/CPP/BPMDetector/Audio/TestAudio/FakeCaptureService.cpp
- /home/pi/CPP/BPMDetector/Audio/TestAudio/FakeCaptureService.hpp
+ /home/pi/CPP/BPMDetector/Audio/TestAudio/FakeAudioRecorder.cpp
+ /home/pi/CPP/BPMDetector/Audio/TestAudio/FakeAudioRecorder.hpp
  /home/pi/CPP/BPMDetector/Audio/TestAudio/FakeCardConfigurator.cpp
  /home/pi/CPP/BPMDetector/Audio/TestAudio/FakeCardConfigurator.hpp
  /home/pi/CPP/BPMDetector/Audio/TestAudio/FakeCardInfoGetter.cpp
@@ -28,8 +27,7 @@ CMakeFiles/runTests.dir/TestMain.cpp.o
  /home/pi/CPP/BPMDetector/Audio/TestAudio/SampleData.hpp
  /home/pi/CPP/BPMDetector/Audio/TestAudio/TestALSACardFilter.cpp
  /home/pi/CPP/BPMDetector/Audio/TestAudio/TestALSACardLister.cpp
- /home/pi/CPP/BPMDetector/Audio/TestAudio/TestALSACardManager.cpp
- /home/pi/CPP/BPMDetector/Audio/TestAudio/TestAudioRecorder.cpp
+ /home/pi/CPP/BPMDetector/Audio/TestAudio/TestAudioCardManager.cpp
  /home/pi/CPP/BPMDetector/Audio/TestAudio/TestBuffer.cpp
  /home/pi/CPP/BPMDetector/Audio/TestAudio/TestMain.cpp
  /home/pi/CPP/BPMDetector/Audio/Wavfiles/TestWavFile.cpp

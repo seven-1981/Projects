@@ -7,13 +7,12 @@
 #include <string>
 
 
-//Forward declaration of interface class
+//Forward declarations
 class ICardInfoGetter;
-//Forward declaration of card info
 struct ALSACardInfo_t;
-//Using for card info type
+//Using for type simplification
 using CARD_INFO_TYPE = ALSACardInfo_t;
-
+using INFO_GETTER_TYPE = ICardInfoGetter;
 
 //Definition of audio card lister class for Linux sound (ALSA)
 class ALSACardLister : public ICardLister<CARD_INFO_TYPE>
@@ -23,14 +22,14 @@ public:
 	~ALSACardLister();
 	
 	//Init method - starts card detection
-	void init(ICardInfoGetter* info_getter) override;
+	void init(INFO_GETTER_TYPE* info_getter) override;
 	
 	//Override the base class methods
 	std::vector<CARD_INFO_TYPE> get_cardInfos() const override;
 	
 private:
 	//Soundcard info getter
-	ICardInfoGetter* m_cardInfoGetter;
+	INFO_GETTER_TYPE* m_cardInfoGetter;
 	//Soundcard infos
 	std::vector<CARD_INFO_TYPE> m_cardInfo;
 	

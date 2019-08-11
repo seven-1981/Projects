@@ -1,11 +1,13 @@
 #ifndef _ALSACARDCONFIGURATION_H
 #define _ALSACARDCONFIGURATION_H
 
+#include "ICardConfiguration.hpp"
+
 #include <alsa/asoundlib.h>
 
 
 //Struct for ALSA card configuration parameters
-struct ALSACardConfiguration_t
+struct ALSACardConfiguration_t : public ICardConfiguration_t
 {
 	snd_pcm_stream_t 	PCM_CAPTURE_MODE 	= SND_PCM_STREAM_CAPTURE;
 	int 				PCM_BLOCKING_MODE 	= SND_PCM_NONBLOCK;

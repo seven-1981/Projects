@@ -8,14 +8,16 @@
 #include <string>
 
 
-//Forward declaration of error enum class
+//Forward declarations
 enum class Errors_e;
-//Using for card config type
+struct ICardConfiguration_t;
+//Using for type simplifications
+using GEN_CARD_CONFIG_TYPE = ICardConfiguration_t;
 using CARD_CONFIG_TYPE = ALSACardConfiguration_t;
 
 
 //Card info configuration with ALSA API
-class ALSACardConfigurator : public ICardConfigurator<CARD_CONFIG_TYPE>
+class ALSACardConfigurator : public ICardConfigurator
 {
 public:
 	explicit ALSACardConfigurator() : m_hw_id() { }
@@ -23,7 +25,7 @@ public:
 
 	//Override the base class methods
 	void set_hw_id(std::string& hw_id) override;
-	Errors_e configure(CARD_CONFIG_TYPE& config) override;
+	Errors_e configure(GEN_CARD_CONFIG_TYPE& config) override;
 	
 private:
 	//Handle for the PCM device

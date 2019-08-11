@@ -20,7 +20,7 @@ ALSACardLister::~ALSACardLister()
 	
 }
 
-void ALSACardLister::init(ICardInfoGetter* info_getter)
+void ALSACardLister::init(INFO_GETTER_TYPE* info_getter)
 {
 	m_cardInfoGetter = info_getter;
 	//Start detection process if initialized
@@ -122,7 +122,7 @@ void ALSACardLister::open_and_extract(std::string& hw_id, CARD_INFO_TYPE& info)
 void ALSACardLister::extract_card_name(CARD_INFO_TYPE& info)
 {
 	std::string card_name { };
-	(void)m_cardInfoGetter->get_name(card_name);
 	//Upon error, empty string is returned, so discard return value
+	(void)m_cardInfoGetter->get_name(card_name);
 	info.name = card_name;
 }

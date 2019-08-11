@@ -8,52 +8,54 @@ void ALSACardConfigurator::set_hw_id(std::string& hw_id)
 	m_hw_id = hw_id;
 }
 
-Errors_e ALSACardConfigurator::configure(CARD_CONFIG_TYPE& config)
+Errors_e ALSACardConfigurator::configure(GEN_CARD_CONFIG_TYPE& config)
 {
+	CARD_CONFIG_TYPE& typedConfig = dynamic_cast<CARD_CONFIG_TYPE&>(config);
+
 	//Start onfiguration process
-	if (open_device(config) < 0)
+	if (open_device(typedConfig) < 0)
 	{
-		return Errors_e::AUDIO_CONFIG_CANT_OPEN_PCM_DEVICE;
+		return Errors_e::AUDIO_MANAGER_CANT_OPEN_PCM_DEVICE;
 	}
 	
 	if (allocate_param_struct() < 0)
 	{
-		return Errors_e::AUDIO_CONFIG_ERROR_ALLOCATING_PARAM_HW;
+		return Errors_e::AUDIO_MANAGER_CARD_CONFIG_FAILURE;
 	}
 	
 	if (init_param_struct() < 0)
 	{
-		return Errors_e::AUDIO_CONFIG_ERROR_INITIALIZING_PARAM;
+		return Errors_e::AUDIO_MANAGER_CARD_CONFIG_FAILURE;
 	}
 	
-	if (set_access_mode(config) < 0)
+	if (set_access_mode(typedConfig) < 0)
 	{
-		return Errors_e::AUDIO_CONFIG_ERROR_SETTING_ACCESS_MODE;
+		return Errors_e::AUDIO_MANAGER_CARD_CONFIG_FAILURE;
 	}
 	
-	if (set_audio_format(config) < 0)
+	if (set_audio_format(typedConfig) < 0)
 	{
-		return Errors_e::AUDIO_CONFIG_ERROR_SETTING_AUDIO_FORMAT;
+		return Errors_e::AUDIO_MANAGER_CARD_CONFIG_FAILURE;
 	}
 	
-	if (set_sample_rate(config) < 0)
+	if (set_sample_rate(typedConfig) < 0)
 	{
-		return Errors_e::AUDIO_CONFIG_ERROR_SETTING_SAMPLE_RATE;
+		return Errors_e::AUDIO_MANAGER_CARD_CONFIG_FAILURE;
 	}
 	
-	if (set_num_channels(config) < 0)
+	if (set_num_channels(typedConfig) < 0)
 	{
-		return Errors_e::AUDIO_CONFIG_ERROR_SETTING_NUMBER_OF_CHANNELS;
+		return Errors_e::AUDIO_MANAGER_CARD_CONFIG_FAILURE;
 	}
 	
 	if (apply_params() < 0)
 	{
-		return Errors_e::AUDIO_CONFIG_ERROR_APPLYING_HW_PARAMS;
+		return Errors_e::AUDIO_MANAGER_CARD_CONFIG_FAILURE;
 	}
 	
 	if (prepare_interface() < 0)
 	{
-		return Errors_e::AUDIO_CONFIG_ERROR_PREPARING_INTERFACE;
+		return Errors_e::AUDIO_MANAGER_CARD_CONFIG_FAILURE;
 	} 
 	
 	//Configuration was successful

@@ -58,7 +58,7 @@ WavHeader_t WavFile::get_header() const
     return headerToReturn;
 }
 
-unsigned int WavFile::get_size() const
+size_t WavFile::get_size() const
 {
     m_data.seekg(DATA_POS - 4);
     return read_word(4) / get_header().frame_size;

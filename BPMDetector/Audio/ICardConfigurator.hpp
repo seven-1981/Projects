@@ -4,13 +4,11 @@
 #include <string>
 
 
-//Forward declaration of error enum class
+//Forward declarations
 enum class Errors_e;
+struct ICardConfiguration_t;
 
 
-//Interface for card configurator. The template parameter
-//defines the card config type
-template <typename T>
 class ICardConfigurator
 {
 public:
@@ -19,7 +17,7 @@ public:
 	//Set hardware ID for opening card interface
 	virtual void set_hw_id(std::string& hw_id) = 0;
 	//Start card configuration process
-	virtual Errors_e configure(T& config) = 0;
+	virtual Errors_e configure(ICardConfiguration_t& config) = 0;
 };
 
 #endif

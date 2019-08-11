@@ -27,7 +27,7 @@ public:
 
     std::string get_data() const;
     WavHeader_t get_header() const;
-    unsigned int get_size() const;
+    size_t get_size() const;
 
     template <typename T>
     friend WavFile& operator<<(WavFile& wavFile, T& value);

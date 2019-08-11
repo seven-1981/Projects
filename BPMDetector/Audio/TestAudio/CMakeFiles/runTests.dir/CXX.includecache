@@ -7,6 +7,8 @@
 #IncludeRegexTransform: 
 
 /home/pi/CPP/BPMDetector/Audio/ALSACardConfiguration.hpp
+ICardConfiguration.hpp
+/home/pi/CPP/BPMDetector/Audio/ICardConfiguration.hpp
 alsa/asoundlib.h
 -
 
@@ -21,8 +23,8 @@ string
 -
 
 /home/pi/CPP/BPMDetector/Audio/ALSACardInfo.hpp
-../globals.hpp
-/home/pi/CPP/BPMDetector/globals.hpp
+ICardInfo.hpp
+/home/pi/CPP/BPMDetector/Audio/ICardInfo.hpp
 string
 -
 
@@ -52,19 +54,21 @@ vector
 string
 -
 
-/home/pi/CPP/BPMDetector/Audio/ALSACardManager.cpp
-ALSACardManager.hpp
-/home/pi/CPP/BPMDetector/Audio/ALSACardManager.hpp
+/home/pi/CPP/BPMDetector/Audio/AudioCardManager.cpp
+AudioCardManager.hpp
+/home/pi/CPP/BPMDetector/Audio/AudioCardManager.hpp
 string
 -
 
-/home/pi/CPP/BPMDetector/Audio/ALSACardManager.hpp
+/home/pi/CPP/BPMDetector/Audio/AudioCardManager.hpp
 ICardManager.hpp
 /home/pi/CPP/BPMDetector/Audio/ICardManager.hpp
 ICardLister.hpp
 /home/pi/CPP/BPMDetector/Audio/ICardLister.hpp
 ICardConfigurator.hpp
 /home/pi/CPP/BPMDetector/Audio/ICardConfigurator.hpp
+IAudioRecorder.hpp
+/home/pi/CPP/BPMDetector/Audio/IAudioRecorder.hpp
 ALSACardInfo.hpp
 /home/pi/CPP/BPMDetector/Audio/ALSACardInfo.hpp
 ALSACardConfiguration.hpp
@@ -76,14 +80,6 @@ functional
 vector
 -
 
-/home/pi/CPP/BPMDetector/Audio/AudioRecorder.cpp
-AudioRecorder.hpp
-/home/pi/CPP/BPMDetector/Audio/AudioRecorder.hpp
-
-/home/pi/CPP/BPMDetector/Audio/AudioRecorder.hpp
-IAudioRecorder.hpp
-/home/pi/CPP/BPMDetector/Audio/IAudioRecorder.hpp
-
 /home/pi/CPP/BPMDetector/Audio/Buffer.hpp
 array
 -
@@ -92,11 +88,13 @@ cassert
 
 /home/pi/CPP/BPMDetector/Audio/IAudioRecorder.hpp
 
-/home/pi/CPP/BPMDetector/Audio/ICaptureService.hpp
+/home/pi/CPP/BPMDetector/Audio/ICardConfiguration.hpp
 
 /home/pi/CPP/BPMDetector/Audio/ICardConfigurator.hpp
 string
 -
+
+/home/pi/CPP/BPMDetector/Audio/ICardInfo.hpp
 
 /home/pi/CPP/BPMDetector/Audio/ICardInfoGetter.hpp
 string
@@ -108,13 +106,13 @@ vector
 
 /home/pi/CPP/BPMDetector/Audio/ICardManager.hpp
 
-/home/pi/CPP/BPMDetector/Audio/TestAudio/FakeCaptureService.cpp
-FakeCaptureService.hpp
-/home/pi/CPP/BPMDetector/Audio/TestAudio/FakeCaptureService.hpp
+/home/pi/CPP/BPMDetector/Audio/TestAudio/FakeAudioRecorder.cpp
+FakeAudioRecorder.hpp
+/home/pi/CPP/BPMDetector/Audio/TestAudio/FakeAudioRecorder.hpp
 
-/home/pi/CPP/BPMDetector/Audio/TestAudio/FakeCaptureService.hpp
-../ICaptureService.hpp
-/home/pi/CPP/BPMDetector/Audio/ICaptureService.hpp
+/home/pi/CPP/BPMDetector/Audio/TestAudio/FakeAudioRecorder.hpp
+../IAudioRecorder.hpp
+/home/pi/CPP/BPMDetector/Audio/IAudioRecorder.hpp
 
 /home/pi/CPP/BPMDetector/Audio/TestAudio/FakeCardConfigurator.cpp
 FakeCardConfigurator.hpp
@@ -156,22 +154,16 @@ FakeCardInfoGetter.cpp
 gtest/gtest.h
 -
 
-/home/pi/CPP/BPMDetector/Audio/TestAudio/TestALSACardManager.cpp
+/home/pi/CPP/BPMDetector/Audio/TestAudio/TestAudioCardManager.cpp
 FakeCardConfigurator.cpp
 /home/pi/CPP/BPMDetector/Audio/TestAudio/FakeCardConfigurator.cpp
-../ALSACardManager.cpp
-/home/pi/CPP/BPMDetector/Audio/ALSACardManager.cpp
+FakeAudioRecorder.cpp
+/home/pi/CPP/BPMDetector/Audio/TestAudio/FakeAudioRecorder.cpp
+../AudioCardManager.cpp
+/home/pi/CPP/BPMDetector/Audio/AudioCardManager.cpp
 gtest/gtest.h
 -
 string
--
-
-/home/pi/CPP/BPMDetector/Audio/TestAudio/TestAudioRecorder.cpp
-../AudioRecorder.cpp
-/home/pi/CPP/BPMDetector/Audio/AudioRecorder.cpp
-FakeCaptureService.cpp
-/home/pi/CPP/BPMDetector/Audio/TestAudio/FakeCaptureService.cpp
-gtest/gtest.h
 -
 
 /home/pi/CPP/BPMDetector/Audio/TestAudio/TestBuffer.cpp
@@ -189,10 +181,8 @@ TestALSACardLister.cpp
 /home/pi/CPP/BPMDetector/Audio/TestAudio/TestALSACardLister.cpp
 TestALSACardFilter.cpp
 /home/pi/CPP/BPMDetector/Audio/TestAudio/TestALSACardFilter.cpp
-TestALSACardManager.cpp
-/home/pi/CPP/BPMDetector/Audio/TestAudio/TestALSACardManager.cpp
-TestAudioRecorder.cpp
-/home/pi/CPP/BPMDetector/Audio/TestAudio/TestAudioRecorder.cpp
+TestAudioCardManager.cpp
+/home/pi/CPP/BPMDetector/Audio/TestAudio/TestAudioCardManager.cpp
 TestBuffer.cpp
 /home/pi/CPP/BPMDetector/Audio/TestAudio/TestBuffer.cpp
 ../Wavfiles/TestWavFile.cpp

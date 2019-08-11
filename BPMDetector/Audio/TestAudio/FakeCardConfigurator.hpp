@@ -5,7 +5,10 @@
 #include "../ALSACardConfiguration.hpp"
 
 
-//Using for card config type
+//Forward declarations
+struct ICardConfiguration_t;
+//Using for type simplifications
+using GEN_CARD_CONFIG_TYPE = ICardConfiguration_t;
 using CARD_CONFIG_TYPE = ALSACardConfiguration_t;
 
 //States used in this mock
@@ -25,7 +28,7 @@ enum FakeCardConfiguratorStates_e
 
 
 //Mock object for testing
-class FakeCardConfigurator : public ICardConfigurator<CARD_CONFIG_TYPE>
+class FakeCardConfigurator : public ICardConfigurator
 {
 public:
 	FakeCardConfigurator() : m_hw_id() { }
@@ -36,7 +39,7 @@ public:
 	
 	//Override the base class methods
 	void set_hw_id(std::string& hw_id) override;
-	Errors_e configure(CARD_CONFIG_TYPE& config) override;
+	Errors_e configure(GEN_CARD_CONFIG_TYPE& config) override;
 	
 private:
 	FakeCardConfiguratorStates_e m_state;
