@@ -2,6 +2,10 @@
 #define _IAUDIORECORDER_H
 
 
+//Forward declarations
+struct ICardConfiguration_t;
+
+
 //Interface class for audio recording
 class IAudioRecorder
 {
@@ -9,7 +13,8 @@ public:
     virtual ~IAudioRecorder() { }
 
     //Interface functions
-    virtual long pcm_readi(unsigned long size) = 0;
+    virtual void prepare_buffer(ICardConfiguration_t& configuration, long size) = 0;
+    virtual long get_buffer_size() = 0;
 };
 
 #endif

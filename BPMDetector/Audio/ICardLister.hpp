@@ -8,6 +8,10 @@
 class ICardInfoGetter;
 
 
+//Normally, templates and inheritance don't go well with each other. In this case,
+//we use the template to delegate the type definition to the inheritor. Otherwise,
+//for the vector elements we'd have to use dynamic memory allocation to hold polymorphic
+//vector elements.
 template <typename CARD_INFO_TYPE>
 class ICardLister
 {

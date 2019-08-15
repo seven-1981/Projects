@@ -7,7 +7,7 @@
 #include "IAudioRecorder.hpp"
 #include "ALSACardInfo.hpp"
 #include "ALSACardConfiguration.hpp"
-#include "ALSACardFilter.hpp"
+#include "AudioCardFilter.hpp"
 
 #include <functional>
 #include <vector>
@@ -17,14 +17,14 @@
 enum class Errors_e;
 struct ICardConfiguration_t;
 //Typename simplification
-using CARD_INFO_TYPE = ALSACardInfo_t;
-using LISTER_TYPE = ICardLister<ALSACardInfo_t>;
-using GEN_CARD_CONFIG_TYPE = ICardConfiguration_t;
 using CARD_CONFIG_TYPE = ALSACardConfiguration_t;
 using CONFIGURATOR_TYPE = ICardConfigurator;
-using CARD_LIST = std::vector<ALSACardInfo_t>;
-using FILTER_FUNC = std::function<bool(const CARD_INFO_TYPE&)>;
+using LISTER_TYPE = ICardLister<ALSACardInfo_t>;
 using RECORDER_TYPE = IAudioRecorder;
+using GEN_CARD_CONFIG_TYPE = ICardConfiguration_t;
+using CARD_INFO_TYPE = ALSACardInfo_t;
+using FILTER_FUNC = std::function<bool(const ALSACardInfo_t&)>;
+using CARD_LIST = std::vector<ALSACardInfo_t>;
 
 
 class AudioCardManager : public ICardManager<LISTER_TYPE>
@@ -57,7 +57,7 @@ private:
 	//Soundcard configuration
 	CARD_CONFIG_TYPE m_configuration;
 	//Filter to get USB card from card list
-	ALSACardFilter<FILTER_FUNC> m_filter;
+	AudioCardFilter<FILTER_FUNC> m_filter;
 
 	//Apply filter to card list
 	CARD_LIST filter_cards(CARD_LIST& list);

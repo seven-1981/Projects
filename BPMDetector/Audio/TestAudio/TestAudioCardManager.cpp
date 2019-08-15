@@ -1,5 +1,4 @@
 #include "FakeCardConfigurator.cpp"
-#include "FakeAudioRecorder.cpp"
 #include "../AudioCardManager.cpp"
 #include <gtest/gtest.h>
 #include <string>
@@ -14,7 +13,7 @@ public:
     AudioCardManager manager;
     FakeCardConfigurator configurator;
     ALSACardConfiguration_t config;
-    ALSACardLister lister;
+    AudioCardLister lister;
     FakeCardInfoGetter infoGetter;
 
     void SetUp() override 
@@ -167,9 +166,9 @@ TEST_F(TestAudioCardManager, ChecksIfCardIsReadyToCapture)
     manager.init_recorder(&recorder);
 
     ASSERT_EQ(manager.capture_samples(), Errors_e::AUDIO_MANAGER_RECORDER_NOT_READY);
-}
+}*/
 
-
+/*
  TEST_F(TestAudioCardManager, SetsSyncRecordingMode)
  {
      FakeAudioRecorder recorder;

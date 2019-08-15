@@ -1,8 +1,9 @@
 #include <gtest/gtest.h>
-#include "TestALSACardLister.cpp"
-#include "TestALSACardFilter.cpp"
+#include "TestAudioCardLister.cpp"
+#include "TestAudioCardFilter.cpp"
 #include "TestAudioCardManager.cpp"
 #include "TestBuffer.cpp"
+#include "TestAudioRecorder.cpp"
 
 #include "../Wavfiles/TestWavFile.cpp"
 

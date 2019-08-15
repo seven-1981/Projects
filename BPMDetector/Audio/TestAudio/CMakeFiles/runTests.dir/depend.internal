@@ -3,13 +3,15 @@
 
 CMakeFiles/runTests.dir/TestMain.cpp.o
  /home/pi/CPP/BPMDetector/Audio/ALSACardConfiguration.hpp
- /home/pi/CPP/BPMDetector/Audio/ALSACardFilter.hpp
  /home/pi/CPP/BPMDetector/Audio/ALSACardInfo.hpp
  /home/pi/CPP/BPMDetector/Audio/ALSACardInfoGetter.hpp
- /home/pi/CPP/BPMDetector/Audio/ALSACardLister.cpp
- /home/pi/CPP/BPMDetector/Audio/ALSACardLister.hpp
+ /home/pi/CPP/BPMDetector/Audio/AudioCardFilter.hpp
+ /home/pi/CPP/BPMDetector/Audio/AudioCardLister.cpp
+ /home/pi/CPP/BPMDetector/Audio/AudioCardLister.hpp
  /home/pi/CPP/BPMDetector/Audio/AudioCardManager.cpp
  /home/pi/CPP/BPMDetector/Audio/AudioCardManager.hpp
+ /home/pi/CPP/BPMDetector/Audio/AudioRecorder.cpp
+ /home/pi/CPP/BPMDetector/Audio/AudioRecorder.hpp
  /home/pi/CPP/BPMDetector/Audio/Buffer.hpp
  /home/pi/CPP/BPMDetector/Audio/IAudioRecorder.hpp
  /home/pi/CPP/BPMDetector/Audio/ICardConfiguration.hpp
@@ -18,16 +20,18 @@ CMakeFiles/runTests.dir/TestMain.cpp.o
  /home/pi/CPP/BPMDetector/Audio/ICardInfoGetter.hpp
  /home/pi/CPP/BPMDetector/Audio/ICardLister.hpp
  /home/pi/CPP/BPMDetector/Audio/ICardManager.hpp
- /home/pi/CPP/BPMDetector/Audio/TestAudio/FakeAudioRecorder.cpp
- /home/pi/CPP/BPMDetector/Audio/TestAudio/FakeAudioRecorder.hpp
+ /home/pi/CPP/BPMDetector/Audio/IRecordingService.hpp
  /home/pi/CPP/BPMDetector/Audio/TestAudio/FakeCardConfigurator.cpp
  /home/pi/CPP/BPMDetector/Audio/TestAudio/FakeCardConfigurator.hpp
  /home/pi/CPP/BPMDetector/Audio/TestAudio/FakeCardInfoGetter.cpp
  /home/pi/CPP/BPMDetector/Audio/TestAudio/FakeCardInfoGetter.hpp
+ /home/pi/CPP/BPMDetector/Audio/TestAudio/FakeRecordingService.cpp
+ /home/pi/CPP/BPMDetector/Audio/TestAudio/FakeRecordingService.hpp
  /home/pi/CPP/BPMDetector/Audio/TestAudio/SampleData.hpp
- /home/pi/CPP/BPMDetector/Audio/TestAudio/TestALSACardFilter.cpp
- /home/pi/CPP/BPMDetector/Audio/TestAudio/TestALSACardLister.cpp
+ /home/pi/CPP/BPMDetector/Audio/TestAudio/TestAudioCardFilter.cpp
+ /home/pi/CPP/BPMDetector/Audio/TestAudio/TestAudioCardLister.cpp
  /home/pi/CPP/BPMDetector/Audio/TestAudio/TestAudioCardManager.cpp
+ /home/pi/CPP/BPMDetector/Audio/TestAudio/TestAudioRecorder.cpp
  /home/pi/CPP/BPMDetector/Audio/TestAudio/TestBuffer.cpp
  /home/pi/CPP/BPMDetector/Audio/TestAudio/TestMain.cpp
  /home/pi/CPP/BPMDetector/Audio/Wavfiles/TestWavFile.cpp

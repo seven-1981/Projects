@@ -4,11 +4,11 @@
 #include <cmath> 
 #include <alsa/asoundlib.h>
 
-#include "Audio/ALSACardLister.hpp"
+#include "Audio/AudioCardLister.hpp"
 #include "Audio/ALSACardInfoGetter.hpp"
 #include "Audio/ALSACardInfo.hpp"
 #include "Audio/ALSACardConfigurator.hpp"
-#include "Audio/ALSACardManager.hpp"
+#include "Audio/AudioCardManager.hpp"
 
 
 //Global data for audio capture
@@ -142,11 +142,11 @@ void init_audio()
 	      
 int main (int argc, char **argv)
 {
-	ALSACardLister lister;
+	AudioCardLister lister;
 	ALSACardInfoGetter infoGetter;
 	lister.init(&infoGetter);
 	ALSACardConfigurator configurator;
-	ALSACardManager manager;
+	AudioCardManager manager;
 	manager.init_lister(&lister);
 	manager.init_configurator(&configurator);
 	manager.select_and_configure(); 
