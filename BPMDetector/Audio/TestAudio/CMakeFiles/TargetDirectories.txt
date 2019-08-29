@@ -1,3 +1,0 @@
-/home/pi/CPP/BPMDetector/Audio/TestAudio/CMakeFiles/rebuild_cache.dir
-/home/pi/CPP/BPMDetector/Audio/TestAudio/CMakeFiles/edit_cache.dir
-/home/pi/CPP/BPMDetector/Audio/TestAudio/CMakeFiles/runTests.dir
