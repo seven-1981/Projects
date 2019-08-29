@@ -28,23 +28,20 @@ public:
 	Errors_e configure(GEN_CARD_CONFIG_TYPE& config) override;
 	
 private:
-	//Handle for the PCM device
-	snd_pcm_t* m_pcmHandle;
-	//Hardware parameters
-	snd_pcm_hw_params_t* m_hwParams;
 	//Hardware identifier used for open PCM device
 	std::string m_hw_id;
 	
 	//Configuration functions are executed in this particular order
 	int open_device(CARD_CONFIG_TYPE& config);
-	int allocate_param_struct();
-	int init_param_struct();
+	int allocate_param_struct(CARD_CONFIG_TYPE& config);
+	int init_param_struct(CARD_CONFIG_TYPE& config);
 	int set_access_mode(CARD_CONFIG_TYPE& config);
 	int set_audio_format(CARD_CONFIG_TYPE& config);
 	int set_sample_rate(CARD_CONFIG_TYPE& config);
 	int set_num_channels(CARD_CONFIG_TYPE& config);
-	int apply_params();
-	int prepare_interface();
+	int apply_params(CARD_CONFIG_TYPE& config);
+	int prepare_interface(CARD_CONFIG_TYPE& config);
+	void free_params(CARD_CONFIG_TYPE& config);
 };
 
 #endif

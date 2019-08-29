@@ -9,6 +9,7 @@
 #include "Audio/ALSACardInfo.hpp"
 #include "Audio/ALSACardConfigurator.hpp"
 #include "Audio/AudioCardManager.hpp"
+#include "Audio/ALSACardConfiguration.hpp"
 
 
 //Global data for audio capture
@@ -142,6 +143,9 @@ void init_audio()
 	      
 int main (int argc, char **argv)
 {
+	//Clear screen
+	std::cout << "\033[2J\033[1;1H";
+	
 	AudioCardLister lister;
 	ALSACardInfoGetter infoGetter;
 	lister.init(&infoGetter);
@@ -149,10 +153,8 @@ int main (int argc, char **argv)
 	AudioCardManager manager;
 	manager.init_lister(&lister);
 	manager.init_configurator(&configurator);
-	manager.select_and_configure(); 
-	
-	//Clear screen
-	std::cout << "\033[2J\033[1;1H";
+	ALSACardConfiguration_t config;
+	std::cout << "select_and_configure() = " <<(int)manager.select_and_configure(config) << std::endl;
 
 	//Write found config
 	std::vector<ALSACardInfo_t> cardInfo = lister.get_cardInfos();

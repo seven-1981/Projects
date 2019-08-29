@@ -4,19 +4,39 @@
 #include "IAudioRecorder.hpp"
 
 
+//Forward declarations
+enum class Errors_e;
+//Typename simplifications
+using GEN_CARD_CONFIG_TYPE = ICardConfiguration_t;
+
+
+enum class CaptureMode_e
+{
+    CaptureMode_Sync,
+    CaptureMode_Async
+};
+
+
 class AudioRecorder : public IAudioRecorder
 {
 public:
     AudioRecorder() :
-      m_bufferSize(0) { }
+      m_bufferSize(0), m_mode(CaptureMode_e::CaptureMode_Sync) { }
     ~AudioRecorder() { }
 
     //Override interface functions
-    void prepare_buffer(ICardConfiguration_t& configuration, long size) override;
-    long get_buffer_size() override;
+    void init(IRecordingService* service) override;
+    Errors_e prepare_buffer(GEN_CARD_CONFIG_TYPE& configuration, int size) override;
+    int get_buffer_size() override;
+    int capture_samples() override;
+
+    //Capture mode setter
+    void set_mode(CaptureMode_e mode);
 
 private:
-    long m_bufferSize;
+    int m_bufferSize;
+    IRecordingService* m_service;
+    CaptureMode_e m_mode;
 };
 
 #endif

@@ -5,7 +5,7 @@
 
 
 AudioCardManager::AudioCardManager() 
-  : m_cardLister(nullptr), m_cardConfigurator(nullptr), m_configuration(), m_filter()
+  : m_cardLister(nullptr), m_cardConfigurator(nullptr), m_filter()
 {
 
 }
@@ -23,16 +23,6 @@ void AudioCardManager::init_configurator(CONFIGURATOR_TYPE* configurator)
 void AudioCardManager::init_lister(LISTER_TYPE* lister)
 {
 	m_cardLister = lister;
-}
-
-void AudioCardManager::init_recorder(RECORDER_TYPE* recorder)
-{
-
-}
-
-void AudioCardManager::set_configuration(GEN_CARD_CONFIG_TYPE& configuration)
-{
-    m_configuration = dynamic_cast<CARD_CONFIG_TYPE&>(configuration);
 }
 
 void AudioCardManager::set_filter(FILTER_FUNC func)
@@ -73,7 +63,7 @@ Errors_e AudioCardManager::create_usb_hw_id(std::string& hw_id)
     return retval;
 }
 
-Errors_e AudioCardManager::select_and_configure()
+Errors_e AudioCardManager::select_and_configure(GEN_CARD_CONFIG_TYPE& config)
 {
     std::string hw_id { };
     Errors_e retval = create_usb_hw_id(hw_id);
@@ -88,14 +78,14 @@ Errors_e AudioCardManager::select_and_configure()
         return retval;
     }
 
-    return configure();
+    return configure(config);
 }
 
-Errors_e AudioCardManager::configure()
+Errors_e AudioCardManager::configure(GEN_CARD_CONFIG_TYPE& config)
 {
     if (m_cardConfigurator != nullptr)
     {
-        return m_cardConfigurator->configure(m_configuration);
+        return m_cardConfigurator->configure(config);
     }
     else
     {

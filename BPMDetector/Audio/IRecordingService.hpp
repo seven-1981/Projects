@@ -9,7 +9,9 @@ public:
     virtual ~IRecordingService() { }
 
     //Interface functions
-    virtual long pcm_readi(unsigned long size) = 0;
+    virtual int pcm_readi(int size) = 0;
+    virtual int pcm_drop() = 0;
+    virtual int pcm_recover() = 0;
 };
 
 #endif
