@@ -25,9 +25,9 @@ public:
 	FakeCardInfoGetter() : m_state(State_NextFailure), m_number(0), m_counter(0) { }
 	~FakeCardInfoGetter() { }
 	
-	int next(int& num);
-	int open(std::string hw_id);
-	int get_name(std::string& name);
+	int next(int& num) override;
+	int open(std::string hw_id) override;
+	int get_name(std::string& name) override;
 	
 	//Set state of mock - defines test case
 	void set_state(FakeCardInfoStates_e state);

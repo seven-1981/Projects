@@ -155,9 +155,9 @@ TEST_F(TestWavFile, ReadsFileSizeCorrectly)
 }
 
 //Disabled due to file access - possibly slowing down tests
-TEST_F(TestWavFile, DISABLED_ReadsHeaderInformationFromFstreamFile)
+TEST_F(TestWavFile, SLOW_ReadsHeaderInformationFromFstreamFile)
 {
-    std::fstream fs("/home/pi/CPP/Test/TestAudio/Wavfiles/fast160.wav", std::ios_base::in | std::ios_base::binary);
+    std::fstream fs("/home/pi/CPP/BPMDetector/Audio/Wavfiles/fast160.wav", std::ios_base::in | std::ios_base::binary);
     ASSERT_EQ(fs.is_open(), true);
     WavFile wavFile(fs);
     WavHeader_t extractedHeader = wavFile.get_header();

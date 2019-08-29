@@ -38,7 +38,7 @@ TEST_F(TestAudioCardManager, ReturnsNotInitializedIfListerNotInitialized)
 {
     AudioCardManager manager_not_initialized;
 
-    Errors_e retval = manager_not_initialized.select_and_configure();
+    Errors_e retval = manager_not_initialized.select_and_configure(config);
     
     ASSERT_EQ(retval, Errors_e::AUDIO_MANAGER_NOT_INITIALIZED);
 }
@@ -78,7 +78,7 @@ TEST_F(TestAudioCardManager, BuildsCorrectHWIDStringFromUSBCardID)
 {
     std::string hw_id { };
 
-    Errors_e retval = manager.create_usb_hw_id(hw_id);
+    IGNORE manager.create_usb_hw_id(hw_id);
 
     ASSERT_EQ(hw_id, HW_ID);     
 }
@@ -89,7 +89,7 @@ TEST_F(TestAudioCardManager, ReturnsNoSoundcardsFoundIfOpenFailure)
     lister.init(&infoGetter);
     manager.init_lister(&lister);
 
-    Errors_e retval = manager.select_and_configure();
+    Errors_e retval = manager.select_and_configure(config);
 
     ASSERT_EQ(retval, Errors_e::AUDIO_MANAGER_NO_USB_CARDS_FOUND);
 }
@@ -100,7 +100,7 @@ TEST_F(TestAudioCardManager, ReturnsNoSoundcardsFoundIfGetFailure)
     lister.init(&infoGetter);
     manager.init_lister(&lister);
 
-    Errors_e retval = manager.select_and_configure();
+    Errors_e retval = manager.select_and_configure(config);
 
     ASSERT_EQ(retval, Errors_e::AUDIO_MANAGER_NO_USB_CARDS_FOUND);
 }
@@ -114,7 +114,7 @@ TEST_F(TestAudioCardManager, ReturnsNotInitializedIfConfiguratorNotInitialized)
     AudioCardManager manager_not_initialized;
     manager_not_initialized.init_lister(&lister);
 
-    Errors_e retval = manager_not_initialized.select_and_configure();
+    Errors_e retval = manager_not_initialized.select_and_configure(config);
     
     ASSERT_EQ(retval, Errors_e::AUDIO_MANAGER_NOT_INITIALIZED);
 }
@@ -125,7 +125,7 @@ TEST_F(TestAudioCardManager, ReturnsCorrectStatusAfterOpenDeviceFailure)
 
     manager.init_configurator(&configurator);
     
-    ASSERT_EQ(manager.select_and_configure(), Errors_e::AUDIO_MANAGER_CANT_OPEN_PCM_DEVICE);
+    ASSERT_EQ(manager.select_and_configure(config), Errors_e::AUDIO_MANAGER_CANT_OPEN_PCM_DEVICE);
 }
 
 TEST_F(TestAudioCardManager, ReturnsCorrectStatusAfterConfigFailure)
@@ -134,7 +134,7 @@ TEST_F(TestAudioCardManager, ReturnsCorrectStatusAfterConfigFailure)
 
     manager.init_configurator(&configurator);
     
-    ASSERT_EQ(manager.select_and_configure(), Errors_e::AUDIO_MANAGER_CARD_CONFIG_FAILURE);
+    ASSERT_EQ(manager.select_and_configure(config), Errors_e::AUDIO_MANAGER_CARD_CONFIG_FAILURE);
 }
 
 TEST_F(TestAudioCardManager, ReturnsCorrectStatusUponSuccess)
@@ -143,36 +143,14 @@ TEST_F(TestAudioCardManager, ReturnsCorrectStatusUponSuccess)
     
     manager.init_configurator(&configurator);
     
-    ASSERT_EQ(manager.select_and_configure(), Errors_e::NO_ERROR);
+    ASSERT_EQ(manager.select_and_configure(config), Errors_e::NO_ERROR);
 }
 
 TEST_F(TestAudioCardManager, PerformsReconfiguration)
 {
     configurator.set_state(State_ConfigSuccess);
     manager.init_configurator(&configurator);
-    manager.set_configuration(config);
-    manager.select_and_configure();
+    manager.select_and_configure(config);
 
-    ASSERT_EQ(manager.configure(), Errors_e::NO_ERROR);
+    ASSERT_EQ(manager.configure(config), Errors_e::NO_ERROR);
 }
-
-/*****************************************
- * RECORDER TESTING
- ****************************************/
-/*
-TEST_F(TestAudioCardManager, ChecksIfCardIsReadyToCapture)
-{
-    FakeAudioRecorder recorder;
-    manager.init_recorder(&recorder);
-
-    ASSERT_EQ(manager.capture_samples(), Errors_e::AUDIO_MANAGER_RECORDER_NOT_READY);
-}*/
-
-/*
- TEST_F(TestAudioCardManager, SetsSyncRecordingMode)
- {
-     FakeAudioRecorder recorder;
-     manager.init_recorder(&recorder);
-
- }
- */

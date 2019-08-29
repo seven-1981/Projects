@@ -56,14 +56,14 @@ TEST_F(TestBuffer, AssertionIfAccessBeyondSize)
 }
 
 //Disabled due to execution time comsumption
-TEST_F(TestBuffer, DISABLED_CopyConstructorWorksProperly)
+TEST_F(TestBuffer, SLOW_CopyConstructorWorksProperly)
 {
     Buffer<short unsigned int, SIZE> copiedBuffer(buffer);
     ASSERT_EQ(copiedBuffer, buffer);
 }
 
 //Disabled due to execution time comsumption
-TEST_F(TestBuffer, DISABLED_AssignmentWorksProperly)
+TEST_F(TestBuffer, SLOW_AssignmentWorksProperly)
 {
     Buffer<short unsigned int, SIZE> assignedBuffer = buffer;
     ASSERT_EQ(assignedBuffer, buffer);

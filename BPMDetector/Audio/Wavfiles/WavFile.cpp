@@ -14,6 +14,7 @@ template <typename T>
 WavFile& operator<<(WavFile& wavFile, T& value)
 {
     wavFile.write_word(value, sizeof(value));
+    return wavFile;
 }
 
 template <>

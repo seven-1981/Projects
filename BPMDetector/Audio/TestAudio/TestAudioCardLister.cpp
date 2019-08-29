@@ -83,7 +83,7 @@ TEST_F(TestAudioCardLister, ReturnsCorrectNumSoundcardsAfterGetFailure)
 
     soundcardInfo = lister.get_cardInfos();
     
-    for (int i = 0; i < soundcardInfo.size() - 1; ++i)
+    for (unsigned int i = 0; i < soundcardInfo.size() - 1; ++i)
         EXPECT_EQ(soundcardInfo.at(i).name, FAKE_CARD_NAME[i]);
     ASSERT_EQ(soundcardInfo.at(soundcardInfo.size() - 1).name, "");
 }
@@ -109,7 +109,7 @@ TEST_F(TestAudioCardLister, ReturnsCorrectSoundcardNamesAfterSuccessfulDetection
     
     soundcardInfo = lister.get_cardInfos();
 
-    for (int i = 0; i < soundcardInfo.size(); ++i)
+    for (unsigned int i = 0; i < soundcardInfo.size(); ++i)
         EXPECT_EQ(soundcardInfo.at(i).name, FAKE_CARD_NAME[i]);
 }
 
@@ -120,7 +120,7 @@ TEST_F(TestAudioCardLister, ReturnsCorrectSoundcardIdsAfterSuccessfulDetection)
     
     soundcardInfo = lister.get_cardInfos();
 
-    for (int i = 0; i < soundcardInfo.size(); ++i)
+    for (unsigned int i = 0; i < soundcardInfo.size(); ++i)
         EXPECT_EQ(soundcardInfo.at(i).ID, i);
 }
 
@@ -131,7 +131,7 @@ TEST_F(TestAudioCardLister, ReturnsCorrectSoundcardHWIdsAfterSuccessfulDetection
     
     soundcardInfo = lister.get_cardInfos();
 
-    for (int i = 0; i < soundcardInfo.size(); ++i)
+    for (unsigned int i = 0; i < soundcardInfo.size(); ++i)
     {
         std::string hw_id = HW_IDENTIFIER + std::to_string(i);
         EXPECT_EQ(soundcardInfo.at(i).hw_ID, hw_id);
