@@ -4,8 +4,7 @@
 #include "TestAudioCardManager.cpp"
 #include "TestBuffer.cpp"
 #include "TestAudioRecorder.cpp"
-
-#include "../Wavfiles/TestWavFile.cpp"
+#include "TestWavFile.cpp"
 
 int main(int argc, char **argv) {
     testing::InitGoogleTest(&argc, argv);

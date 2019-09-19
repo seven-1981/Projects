@@ -1,5 +1,6 @@
 #include "FakeCardConfigurator.hpp"
-#include "../../globals.hpp"
+#include "globals.hpp"
+
 
 void FakeCardConfigurator::set_hw_id(std::string& hw_id)
 {
@@ -8,6 +9,7 @@ void FakeCardConfigurator::set_hw_id(std::string& hw_id)
 
 Errors_e FakeCardConfigurator::configure(GEN_CARD_CONFIG_TYPE& config)
 {
+	CARD_CONFIG_TYPE& typedConfig = dynamic_cast<CARD_CONFIG_TYPE&>(config);
 	//Simulate results of configuration process
 	switch (m_state)
 	{
@@ -27,6 +29,7 @@ Errors_e FakeCardConfigurator::configure(GEN_CARD_CONFIG_TYPE& config)
 			break;
 
 		case State_ConfigSuccess:
+			typedConfig.INITIALIZED = true;
 			return Errors_e::NO_ERROR;
 			break;
 			

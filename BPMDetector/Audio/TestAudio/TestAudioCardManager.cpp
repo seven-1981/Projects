@@ -1,5 +1,5 @@
 #include "FakeCardConfigurator.cpp"
-#include "../AudioCardManager.cpp"
+#include "AudioCardManager.cpp"
 #include <gtest/gtest.h>
 #include <string>
 

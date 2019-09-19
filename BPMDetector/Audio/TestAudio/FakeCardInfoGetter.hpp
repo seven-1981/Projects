@@ -1,7 +1,7 @@
 #ifndef _FAKECARDINFOGETTER_H
 #define _FAKECARDINFOGETTER_H
 
-#include "../ICardInfoGetter.hpp"
+#include "ICardInfoGetter.hpp"
 
 #include <string>
 

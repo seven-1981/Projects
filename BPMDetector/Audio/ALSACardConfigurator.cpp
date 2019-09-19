@@ -1,6 +1,6 @@
 #include "ALSACardConfigurator.hpp"
 
-#include "../globals.hpp"
+#include "globals.hpp"
 
 
 void ALSACardConfigurator::set_hw_id(std::string& hw_id)
@@ -11,7 +11,6 @@ void ALSACardConfigurator::set_hw_id(std::string& hw_id)
 Errors_e ALSACardConfigurator::configure(GEN_CARD_CONFIG_TYPE& config)
 {
 	CARD_CONFIG_TYPE& typedConfig = dynamic_cast<CARD_CONFIG_TYPE&>(config);
-
 	//Start onfiguration process
 	if (open_device(typedConfig) < 0)
 	{
@@ -61,6 +60,7 @@ Errors_e ALSACardConfigurator::configure(GEN_CARD_CONFIG_TYPE& config)
 	} 
 	
 	//Configuration was successful
+	typedConfig.INITIALIZED = true;
 	return Errors_e::NO_ERROR;
 }
 

@@ -1,8 +1,8 @@
 #ifndef _FAKECARDCONFIGURATOR_H
 #define _FAKECARDCONFIGURATOR_H
 
-#include "../ICardConfigurator.hpp"
-#include "../ALSACardConfiguration.hpp"
+#include "ICardConfigurator.hpp"
+#include "ALSACardConfiguration.hpp"
 
 
 //Forward declarations
@@ -10,6 +10,7 @@ struct ICardConfiguration_t;
 //Using for type simplifications
 using GEN_CARD_CONFIG_TYPE = ICardConfiguration_t;
 using CARD_CONFIG_TYPE = ALSACardConfiguration_t;
+
 
 //States used in this mock
 enum FakeCardConfiguratorStates_e

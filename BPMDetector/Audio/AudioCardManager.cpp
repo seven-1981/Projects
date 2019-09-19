@@ -1,5 +1,5 @@
 #include "AudioCardManager.hpp"
-#include "../globals.hpp"
+#include "globals.hpp"
 
 #include <string>
 

@@ -1,4 +1,4 @@
-#include "../AudioCardFilter.hpp"
+#include "AudioCardFilter.hpp"
 #include <gtest/gtest.h>
 
 

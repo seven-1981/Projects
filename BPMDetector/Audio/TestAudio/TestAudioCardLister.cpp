@@ -1,5 +1,5 @@
 #include "FakeCardInfoGetter.cpp"
-#include "../AudioCardLister.cpp"
+#include "AudioCardLister.cpp"
 #include <gtest/gtest.h>
 
 class TestAudioCardLister : public testing::Test

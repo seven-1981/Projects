@@ -1,42 +1,8 @@
 #include "WavFile.hpp"
 
 #include <string>
+#include <sstream>
 
-
-const std::string FILE_ID = "RIFF----WAVEfmt ";   //Chunk size '-' to be filled in
-const std::string DATA_ID = "data";
-const size_t FILE_SIZE_POS = 4;     //Position of file size in .wav file
-const size_t HEADER_POS = 16;       //Position of start of header info
-const size_t DATA_POS = 44;         //Position of start of data
-
-
-template <typename T>
-WavFile& operator<<(WavFile& wavFile, T& value)
-{
-    wavFile.write_word(value, sizeof(value));
-    return wavFile;
-}
-
-template <>
-WavFile& operator<<(WavFile& wavFile, const std::string& str)
-{
-    for (char c : str)
-    {
-        wavFile.write_word(c, 1);
-    }
-    return wavFile;
-}
-
-template <typename T>
-WavFile& operator>>(WavFile& wavFile, T& value)
-{
-    if (wavFile.m_data.tellg() < DATA_POS)
-    {
-        wavFile.m_data.seekg(DATA_POS);
-    }
-    value = wavFile.read_word(sizeof(value));
-    return wavFile;
-}
 
 std::string WavFile::get_data() const
 {
@@ -88,17 +54,6 @@ void WavFile::finish()
     write_word(file_size - 8, 4);
 }
 
-template <typename WORD>
-void WavFile::write_word(WORD value, unsigned int size)
-{
-	//Function to write "word" into output stream ("binary write"), only works for little endian (RIFF).
-	//For big endian (RIFX), the for loop must be reversed.
-	for (; size > 0; --size, value >>= 8)
-    {
-		m_data.put(static_cast<char>(value & 0xFF));
-    }
-}
-
 unsigned int WavFile::read_word(unsigned int size) const
 {
     //Function to read a "word" from the input stream ("binary read"), only works for little endian (RIFF).
@@ -111,4 +66,13 @@ unsigned int WavFile::read_word(unsigned int size) const
         word |= (unsigned int)extracted_char << (8 * (width - size));
     }
     return word;
+}
+
+WavFile& operator<<(WavFile& wavFile, const std::string& str)
+{
+    for (char c : str)
+    {
+        wavFile.write_word(c, 1);
+    }
+    return wavFile;
 }

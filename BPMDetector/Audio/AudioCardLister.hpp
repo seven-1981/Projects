@@ -14,7 +14,7 @@ struct ALSACardInfo_t;
 using CARD_INFO_TYPE = ALSACardInfo_t;
 using INFO_GETTER_TYPE = ICardInfoGetter;
 
-//Definition of audio card lister class for Linux sound (ALSA)
+//Definition of audio card lister class 
 class AudioCardLister : public ICardLister<CARD_INFO_TYPE>
 {
 public:

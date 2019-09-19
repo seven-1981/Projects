@@ -1,14 +1,15 @@
 #include "FakeRecordingService.cpp"
-#include "../AudioRecorder.cpp"
-#include "../ALSACardConfiguration.hpp"
+#include "AudioRecorder.cpp"
+#include "ALSACardConfiguration.hpp"
+#include "Buffer.hpp"
 #include <gtest/gtest.h>
-
-const int TEST_BUFFER_SIZE = 88200;
 
 
 class TestAudioRecorder : public testing::Test
 {
 public:
+    using SAMPLE_TYPE = short unsigned int;
+
     AudioRecorder recorder;
     AudioCardLister lister;
     FakeCardInfoGetter infoGetter;
@@ -16,6 +17,7 @@ public:
     AudioCardManager manager;
     ALSACardConfiguration_t config;
     FakeRecordingService service;
+    Buffer<SAMPLE_TYPE> buffer;
 
     void SetUp() override
     {
@@ -25,8 +27,8 @@ public:
         configurator.set_state(State_ConfigSuccess);
 	    manager.init_configurator(&configurator);
         manager.select_and_configure(config);
-
-        recorder.prepare_buffer(config, TEST_BUFFER_SIZE);
+        recorder.init(&service);
+        buffer.init(config.PCM_BUFFER_SIZE);
     }
 };
  
@@ -35,35 +37,82 @@ TEST_F(TestAudioRecorder, CreatesInstance)
     AudioRecorder recorder;
 }
 
-TEST_F(TestAudioRecorder, PreparesBufferForRecording)
+TEST_F(TestAudioRecorder, ChecksForInitializationOfRecordingService)
 {
-    AudioRecorder recorder;
-    recorder.prepare_buffer(config, TEST_BUFFER_SIZE);
+    AudioRecorder recorderNotInitialized;
+    Errors_e returnValue = recorderNotInitialized.prepare_recorder(config);
 
-    ASSERT_EQ(recorder.get_buffer_size(), TEST_BUFFER_SIZE);
+    ASSERT_EQ(returnValue, Errors_e::AUDIO_RECORDER_NOT_INITIALIZED);    
+}
+
+TEST_F(TestAudioRecorder, ChecksForInitializationOfPcmHandle)
+{
+    ALSACardConfiguration_t empty_config;
+
+    Errors_e returnValue = recorder.prepare_recorder(empty_config);
+
+    ASSERT_EQ(returnValue, Errors_e::AUDIO_RECORDER_NOT_INITIALIZED); 
+}
+
+TEST_F(TestAudioRecorder, PreparesBuffer)
+{
+    Errors_e returnValue = recorder.prepare_recorder(config);
+
+    ASSERT_EQ(returnValue, Errors_e::NO_ERROR);
+}
+
+TEST_F(TestAudioRecorder, ReturnsErrorCodeIfCaptureCalledWithoutPreparation)
+{
+    Errors_e returnValue = recorder.capture_samples(config, buffer);
+
+    ASSERT_EQ(returnValue, Errors_e::AUDIO_RECORDER_NOT_INITIALIZED);
 }
 
 TEST_F(TestAudioRecorder, CapturesSamplesInSynchronousMode)
 {
     service.set_state(State_CaptureSuccess);
-    recorder.init(&service);
-    recorder.set_mode(CaptureMode_e::CaptureMode_Sync);
+    IGNORE recorder.prepare_recorder(config);
 
-    ASSERT_EQ(recorder.capture_samples(), TEST_BUFFER_SIZE);
+    ASSERT_EQ(recorder.capture_samples(config, buffer), Errors_e::NO_ERROR);
 }
 
 TEST_F(TestAudioRecorder, ReturnsErrorCodeIfCaptureFailsWithEBADFD)
 {
-    service.set_state(State_CaptureReturns_EBADFD_DropError);
-    recorder.init(&service);
-    recorder.set_mode(CaptureMode_e::CaptureMode_Sync);
+    service.set_state(State_CaptureReturns_EBADFD_RecoverNotPossible);
+    IGNORE recorder.prepare_recorder(config);
 
-    ASSERT_EQ(recorder.capture_samples(), RETURN_EBADFD);
+    ASSERT_EQ(recorder.capture_samples(config, buffer), Errors_e::AUDIO_RECORDER_CAPTURE_EBADFD);
 }
 
-/*
+TEST_F(TestAudioRecorder, ReturnsErrorCodeIfCaptureFailsWithEPIPERecoverError)
+{
+    service.set_state(State_CaptureReturns_EPIPE_RecoverError);
+    IGNORE recorder.prepare_recorder(config);
 
-this->buffer = (short*)malloc(PCM_BUF_SIZE * snd_pcm_format_width(PCM_AUDIO_FORMAT) / 8 * PCM_CHANNELS);
+    ASSERT_EQ(recorder.capture_samples(config, buffer), Errors_e::AUDIO_RECORDER_CAPTURE_EPIPE);
+}
 
-*/
+TEST_F(TestAudioRecorder, ReturnsErrorCodeIfCaptureFailsWithEPIPERecoverSuccess)
+{
+    service.set_state(State_CaptureReturns_EPIPE_RecoverSuccess);
+    IGNORE recorder.prepare_recorder(config);
+
+    ASSERT_EQ(recorder.capture_samples(config, buffer), Errors_e::NO_ERROR);
+}
+
+TEST_F(TestAudioRecorder, ReturnsErrorCodeIfCaptureFailsWithESTRPIPERecoverError)
+{
+    service.set_state(State_CaptureReturns_ESTRPIPE_RecoverError);
+    IGNORE recorder.prepare_recorder(config);
+
+    ASSERT_EQ(recorder.capture_samples(config, buffer), Errors_e::AUDIO_RECORDER_CAPTURE_ESTRPIPE);
+}
+
+TEST_F(TestAudioRecorder, ReturnsErrorCodeIfCaptureFailsWithESTRPIPERecoverSuccess)
+{
+    service.set_state(State_CaptureReturns_ESTRPIPE_RecoverSuccess);
+    IGNORE recorder.prepare_recorder(config);
+
+    ASSERT_EQ(recorder.capture_samples(config, buffer), Errors_e::NO_ERROR);
+}
 

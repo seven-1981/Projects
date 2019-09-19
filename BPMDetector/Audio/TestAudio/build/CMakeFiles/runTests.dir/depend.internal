@@ -34,7 +34,7 @@ CMakeFiles/runTests.dir/TestMain.cpp.o
  /home/pi/CPP/BPMDetector/Audio/TestAudio/TestAudioRecorder.cpp
  /home/pi/CPP/BPMDetector/Audio/TestAudio/TestBuffer.cpp
  /home/pi/CPP/BPMDetector/Audio/TestAudio/TestMain.cpp
- /home/pi/CPP/BPMDetector/Audio/Wavfiles/TestWavFile.cpp
+ /home/pi/CPP/BPMDetector/Audio/TestAudio/TestWavFile.cpp
  /home/pi/CPP/BPMDetector/Audio/Wavfiles/WavFile.cpp
  /home/pi/CPP/BPMDetector/Audio/Wavfiles/WavFile.hpp
  /home/pi/CPP/BPMDetector/globals.hpp

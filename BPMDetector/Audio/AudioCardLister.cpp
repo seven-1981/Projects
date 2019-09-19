@@ -1,6 +1,6 @@
 #include "AudioCardLister.hpp"
 
-#include "../globals.hpp"
+#include "globals.hpp"
 #include "ALSACardInfoGetter.hpp"
 #include "ALSACardInfo.hpp"
 
@@ -59,7 +59,6 @@ unsigned int AudioCardLister::detect_num_soundcards() const
 	
 	//First sound card always starts with 0, so we start with -1
 	int cardNum = -1;
-	//Return value from ALSA function
 	int err = 0;
 	
 	while (1)
@@ -123,6 +122,6 @@ void AudioCardLister::extract_card_name(CARD_INFO_TYPE& info)
 {
 	std::string card_name { };
 	//Upon error, empty string is returned, so discard return value
-	(void)m_cardInfoGetter->get_name(card_name);
+	IGNORE m_cardInfoGetter->get_name(card_name);
 	info.name = card_name;
 }

@@ -11,8 +11,6 @@ ICardConfiguration.hpp
 /home/pi/CPP/BPMDetector/Audio/ICardConfiguration.hpp
 alsa/asoundlib.h
 -
-memory
--
 
 /home/pi/CPP/BPMDetector/Audio/ALSACardInfo.hpp
 ICardInfo.hpp
@@ -41,8 +39,8 @@ string
 /home/pi/CPP/BPMDetector/Audio/AudioCardLister.cpp
 AudioCardLister.hpp
 /home/pi/CPP/BPMDetector/Audio/AudioCardLister.hpp
-../globals.hpp
-/home/pi/CPP/BPMDetector/globals.hpp
+globals.hpp
+/home/pi/CPP/BPMDetector/Audio/globals.hpp
 ALSACardInfoGetter.hpp
 /home/pi/CPP/BPMDetector/Audio/ALSACardInfoGetter.hpp
 ALSACardInfo.hpp
@@ -59,8 +57,8 @@ string
 /home/pi/CPP/BPMDetector/Audio/AudioCardManager.cpp
 AudioCardManager.hpp
 /home/pi/CPP/BPMDetector/Audio/AudioCardManager.hpp
-../globals.hpp
-/home/pi/CPP/BPMDetector/globals.hpp
+globals.hpp
+/home/pi/CPP/BPMDetector/Audio/globals.hpp
 string
 -
 
@@ -83,15 +81,31 @@ vector
 /home/pi/CPP/BPMDetector/Audio/AudioRecorder.cpp
 AudioRecorder.hpp
 /home/pi/CPP/BPMDetector/Audio/AudioRecorder.hpp
+IRecordingService.hpp
+/home/pi/CPP/BPMDetector/Audio/IRecordingService.hpp
+ALSACardConfiguration.hpp
+/home/pi/CPP/BPMDetector/Audio/ALSACardConfiguration.hpp
+globals.hpp
+/home/pi/CPP/BPMDetector/Audio/globals.hpp
 
 /home/pi/CPP/BPMDetector/Audio/AudioRecorder.hpp
 IAudioRecorder.hpp
 /home/pi/CPP/BPMDetector/Audio/IAudioRecorder.hpp
+ALSACardConfiguration.hpp
+/home/pi/CPP/BPMDetector/Audio/ALSACardConfiguration.hpp
+IRecordingService.hpp
+/home/pi/CPP/BPMDetector/Audio/IRecordingService.hpp
+Buffer.hpp
+/home/pi/CPP/BPMDetector/Audio/Buffer.hpp
+globals.hpp
+/home/pi/CPP/BPMDetector/Audio/globals.hpp
 
 /home/pi/CPP/BPMDetector/Audio/Buffer.hpp
-array
--
 cassert
+-
+memory
+-
+algorithm
 -
 
 /home/pi/CPP/BPMDetector/Audio/IAudioRecorder.hpp
@@ -119,14 +133,14 @@ vector
 /home/pi/CPP/BPMDetector/Audio/TestAudio/FakeCardConfigurator.cpp
 FakeCardConfigurator.hpp
 /home/pi/CPP/BPMDetector/Audio/TestAudio/FakeCardConfigurator.hpp
-../../globals.hpp
-/home/pi/CPP/BPMDetector/globals.hpp
+globals.hpp
+/home/pi/CPP/BPMDetector/Audio/TestAudio/globals.hpp
 
 /home/pi/CPP/BPMDetector/Audio/TestAudio/FakeCardConfigurator.hpp
-../ICardConfigurator.hpp
-/home/pi/CPP/BPMDetector/Audio/ICardConfigurator.hpp
-../ALSACardConfiguration.hpp
-/home/pi/CPP/BPMDetector/Audio/ALSACardConfiguration.hpp
+ICardConfigurator.hpp
+/home/pi/CPP/BPMDetector/Audio/TestAudio/ICardConfigurator.hpp
+ALSACardConfiguration.hpp
+/home/pi/CPP/BPMDetector/Audio/TestAudio/ALSACardConfiguration.hpp
 
 /home/pi/CPP/BPMDetector/Audio/TestAudio/FakeCardInfoGetter.cpp
 FakeCardInfoGetter.hpp
@@ -135,40 +149,44 @@ string
 -
 
 /home/pi/CPP/BPMDetector/Audio/TestAudio/FakeCardInfoGetter.hpp
-../ICardInfoGetter.hpp
-/home/pi/CPP/BPMDetector/Audio/ICardInfoGetter.hpp
+ICardInfoGetter.hpp
+/home/pi/CPP/BPMDetector/Audio/TestAudio/ICardInfoGetter.hpp
 string
 -
 
 /home/pi/CPP/BPMDetector/Audio/TestAudio/FakeRecordingService.cpp
 FakeRecordingService.hpp
 /home/pi/CPP/BPMDetector/Audio/TestAudio/FakeRecordingService.hpp
+globals.hpp
+/home/pi/CPP/BPMDetector/Audio/TestAudio/globals.hpp
+ALSACardConfiguration.hpp
+/home/pi/CPP/BPMDetector/Audio/TestAudio/ALSACardConfiguration.hpp
 
 /home/pi/CPP/BPMDetector/Audio/TestAudio/FakeRecordingService.hpp
-../IRecordingService.hpp
-/home/pi/CPP/BPMDetector/Audio/IRecordingService.hpp
+IRecordingService.hpp
+/home/pi/CPP/BPMDetector/Audio/TestAudio/IRecordingService.hpp
 
 /home/pi/CPP/BPMDetector/Audio/TestAudio/SampleData.hpp
 
 /home/pi/CPP/BPMDetector/Audio/TestAudio/TestAudioCardFilter.cpp
-../AudioCardFilter.hpp
-/home/pi/CPP/BPMDetector/Audio/AudioCardFilter.hpp
+AudioCardFilter.hpp
+/home/pi/CPP/BPMDetector/Audio/TestAudio/AudioCardFilter.hpp
 gtest/gtest.h
 -
 
 /home/pi/CPP/BPMDetector/Audio/TestAudio/TestAudioCardLister.cpp
 FakeCardInfoGetter.cpp
 /home/pi/CPP/BPMDetector/Audio/TestAudio/FakeCardInfoGetter.cpp
-../AudioCardLister.cpp
-/home/pi/CPP/BPMDetector/Audio/AudioCardLister.cpp
+AudioCardLister.cpp
+/home/pi/CPP/BPMDetector/Audio/TestAudio/AudioCardLister.cpp
 gtest/gtest.h
 -
 
 /home/pi/CPP/BPMDetector/Audio/TestAudio/TestAudioCardManager.cpp
 FakeCardConfigurator.cpp
 /home/pi/CPP/BPMDetector/Audio/TestAudio/FakeCardConfigurator.cpp
-../AudioCardManager.cpp
-/home/pi/CPP/BPMDetector/Audio/AudioCardManager.cpp
+AudioCardManager.cpp
+/home/pi/CPP/BPMDetector/Audio/TestAudio/AudioCardManager.cpp
 gtest/gtest.h
 -
 string
@@ -177,16 +195,18 @@ string
 /home/pi/CPP/BPMDetector/Audio/TestAudio/TestAudioRecorder.cpp
 FakeRecordingService.cpp
 /home/pi/CPP/BPMDetector/Audio/TestAudio/FakeRecordingService.cpp
-../AudioRecorder.cpp
-/home/pi/CPP/BPMDetector/Audio/AudioRecorder.cpp
-../ALSACardConfiguration.hpp
-/home/pi/CPP/BPMDetector/Audio/ALSACardConfiguration.hpp
+AudioRecorder.cpp
+/home/pi/CPP/BPMDetector/Audio/TestAudio/AudioRecorder.cpp
+ALSACardConfiguration.hpp
+/home/pi/CPP/BPMDetector/Audio/TestAudio/ALSACardConfiguration.hpp
+Buffer.hpp
+/home/pi/CPP/BPMDetector/Audio/TestAudio/Buffer.hpp
 gtest/gtest.h
 -
 
 /home/pi/CPP/BPMDetector/Audio/TestAudio/TestBuffer.cpp
-../Buffer.hpp
-/home/pi/CPP/BPMDetector/Audio/Buffer.hpp
+Buffer.hpp
+/home/pi/CPP/BPMDetector/Audio/TestAudio/Buffer.hpp
 SampleData.hpp
 /home/pi/CPP/BPMDetector/Audio/TestAudio/SampleData.hpp
 gtest/gtest.h
@@ -205,12 +225,12 @@ TestBuffer.cpp
 /home/pi/CPP/BPMDetector/Audio/TestAudio/TestBuffer.cpp
 TestAudioRecorder.cpp
 /home/pi/CPP/BPMDetector/Audio/TestAudio/TestAudioRecorder.cpp
-../Wavfiles/TestWavFile.cpp
-/home/pi/CPP/BPMDetector/Audio/Wavfiles/TestWavFile.cpp
+TestWavFile.cpp
+/home/pi/CPP/BPMDetector/Audio/TestAudio/TestWavFile.cpp
 
-/home/pi/CPP/BPMDetector/Audio/Wavfiles/TestWavFile.cpp
+/home/pi/CPP/BPMDetector/Audio/TestAudio/TestWavFile.cpp
 WavFile.cpp
-/home/pi/CPP/BPMDetector/Audio/Wavfiles/WavFile.cpp
+/home/pi/CPP/BPMDetector/Audio/TestAudio/WavFile.cpp
 gtest/gtest.h
 -
 string
@@ -224,6 +244,8 @@ fstream
 WavFile.hpp
 /home/pi/CPP/BPMDetector/Audio/Wavfiles/WavFile.hpp
 string
+-
+sstream
 -
 
 /home/pi/CPP/BPMDetector/Audio/Wavfiles/WavFile.hpp
